@@ -1,0 +1,28 @@
+name: "Docker Prunner Action"
+description: "Automatically prune unused Docker containers, networks, images, and volumes, and stop/remove old containers."
+author: "Hassan Bahati"
+
+inputs:
+  container-name:
+    description: "The name of the docker container to stop and remove (if exists)"
+    required: true
+  prune:
+    description: "Set to true to prune the Docker system."
+    required: false
+    default: true
+  gh-token:
+    description: "GitHub token for API Authentication."
+
+runs:
+  using: "composite"
+  steps:
+    - name: Prune Docker System
+      if: ${{ inputs.prune == 'true' }}
+      run: prune-docker.sh
+
+    - name: Stop and Remove Old Docker Container
+      run: remove-container.sh ${{ inputs.container-name }}
+
+branding:
+  icon: "package"
+  color: blue

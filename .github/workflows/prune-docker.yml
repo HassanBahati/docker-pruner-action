@@ -1,0 +1,19 @@
+name: Prune and Cleanup Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  prune-docker-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Docker Prune and Cleanup
+        uses: ./
+        with:
+          container-name: "app-container"
+          prune: true # Optional; defaults to true
