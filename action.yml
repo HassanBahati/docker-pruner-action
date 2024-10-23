@@ -10,8 +10,6 @@ inputs:
     description: "Set to true to prune the Docker system."
     required: false
     default: true
-  gh-token:
-    description: "GitHub token for API Authentication."
 
 runs:
   using: "composite"
