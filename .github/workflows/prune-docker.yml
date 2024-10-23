@@ -17,3 +17,4 @@ jobs:
         with:
           container-name: "app-container"
           prune: true # Optional; defaults to true
+        shell: bash

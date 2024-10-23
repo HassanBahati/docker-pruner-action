@@ -17,9 +17,11 @@ runs:
     - name: Prune Docker System
       if: ${{ inputs.prune == 'true' }}
       run: prune-docker.sh
+      shell: bash
 
     - name: Stop and Remove Old Docker Container
       run: remove-container.sh ${{ inputs.container-name }}
+      shell: bash
 
 branding:
   icon: "package"
